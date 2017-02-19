@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Switch</title>
+<link rel="stylesheet" type="text/css" href="network.css">
+<script src="jquery-3.1.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	var check = "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+    "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
+    $("#img").bind("contextmenu",function(e){
+		 $("#menu").css("visibility", "visible");
+    });
+	$("#ip1").focus(function(){
+		 $("#ip1").css({'background-color':'white'});
+    });
+	$("#ip2").focus(function(){
+		 $("#ip2").css({'background-color':'white'});
+    });
+	$(".yet").click(function() {
+	$(".yet").css({'background-color':'#FAFAFA','color':'black'});
+	$(this).css({'background-color':'blue','color':'white'});
+	if($(this).attr("id")=="config")
+	{
+	$("#for").css("visibility", "visible");
+	$("#check").hide();
+	}
+	else
+	{
+		$("#check").show();
+		$("#for").css("visibility", "hidden");
+		$("#check").html("Yet to be implemented");
+	}
+	$("#apply").click(function(){
+		 
+		 if($("#ip1").val().match(check)==null)
+		 {
+			$("#ip1").css({'background-color':' #cc0000'})
+		 }
+		 if($("#ip2").val().match(check)==null)
+		 {
+			$("#ip2").css({'background-color':' #cc0000'})
+		 }
+		 if($("#ip1").val().match(check)!=null && $("#ip2").val().match(check)!=null)
+		 {
+			alert("Applied");
+		 }
+    });
+});
+
+});
+</script>
+</head>
+<body  oncontextmenu="return false;">
+<div class="left"><img id="img" src="switch.png" id="img"/></div>
+<div id="menu"><table id="one">
+<tr><td id="config" class="yet">Configure</td></tr>
+<tr><td class="yet" id="1">Rename</td></tr>
+<tr><td class="yet" id="2">xyz</td></tr>
+<tr><td class="yet" id="3">abc</td></tr>
+</table></div>
+<div id="for">
+<form>
+<table height="250" id="two">
+<tr><th id="head">Configure</th></tr>
+<tr><td class="t">&ensp;&ensp;<label>Interface:<br>&ensp;&ensp;<select>
+  <option value="Serial0/1">Serial 0/1</option>
+  <option value="saab">Serial 1/0</option>
+  <option value="mercedes">Serial 0/0/0</option>
+  <option value="audi">Serial 0/1/0</option>
+</select></label></td></tr>
+<tr><td class="t">&ensp;&ensp;<label>IP address:<br>&ensp;&ensp;<input id="ip1" class="ip" type="text" placeholder="x.x.x.x"/></label></td></tr>
+<tr><td class="t">&ensp;&ensp;<label>Preferred DNS:<br>&ensp;&ensp;<input id="ip2" class="ip" type="text" placeholder="x.x.x.x"/></label></td></tr>
+<tr><td class="t">&ensp;&ensp;<button type="button" class="button" id="apply">Apply</button>&ensp;&ensp;&ensp;&ensp;&ensp;<button class="button">Cancel</button>
+</td></tr>
+</table>
+</form>
+</div>
+<div id ="check">
+</div>
+</body>
+</html>
